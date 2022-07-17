@@ -42,25 +42,13 @@ public class Vibration {
         return sInstance;
     }
 
-    private static final String VIB_LIGHT = "/sys/devices/virtual/timed_output/vibrator/vmax_mv_light";
-    private static final String VIB_ENABLE = "/sys/devices/i2c-3/3-0033/vibrator/vib0/vib_enable";
+    private static final String VIB_LIGHT = "/sys/module/qti_haptics/parameters/vmax_mv_override";
+    private static final String VIB_ENABLE = "/sys/module/qti_haptics/parameters/vmax_mv_enable";
 
     private final HashMap<String, MinMax> mVibrations = new HashMap<>();
 
     {
-        mVibrations.put("/sys/class/timed_output/vibrator/amp", new MinMax(0, 100));
-        mVibrations.put("/sys/class/timed_output/vibrator/level", new MinMax(0, 25));
-        mVibrations.put("/sys/class/timed_output/vibrator/pwm_value", new MinMax("/sys/class/timed_output/vibrator/pwm_min", "/sys/class/timed_output/vibrator/pwm_max", 0, 100));
-        mVibrations.put("/sys/class/timed_output/vibrator/pwm_value_1p", new MinMax(53, 99));
-        mVibrations.put("/sys/class/timed_output/vibrator/voltage_level", new MinMax(1200, 3199));
-        mVibrations.put("/sys/class/timed_output/vibrator/vtg_level", new MinMax("/sys/class/timed_output/vibrator/vtg_min", "/sys/class/timed_output/vibrator/vtg_max", 12, 31));
-        mVibrations.put("/sys/class/timed_output/vibrator/vmax_mv", new MinMax(116, 3596));
-        mVibrations.put("/sys/class/timed_output/vibrator/vmax_mv_strong", new MinMax(116, 3596));
-        mVibrations.put("/sys/devices/platform/tspdrv/nforce_timed", new MinMax(1, 127));
-        mVibrations.put("/sys/devices/i2c-3/3-0033/vibrator/vib0/vib_duty_cycle", new MinMax(25, 100));
-        mVibrations.put("/sys/module/qpnp_vibrator/parameters/vib_voltage", new MinMax(12, 31));
-        mVibrations.put("/sys/vibrator/pwmvalue", new MinMax(0, 127));
-        mVibrations.put("/sys/kernel/thunderquake_engine/level", new MinMax(0, 7));
+        mVibrations.put("/sys/module/qti_haptics/parameters/vmax_mv_override", new MinMax(116, 3596));
     }
 
     private String FILE;
